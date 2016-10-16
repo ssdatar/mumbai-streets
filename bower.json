@@ -1,0 +1,13 @@
+{
+  "name": "mumbai-streets",
+  "dependencies": {
+    "underscore": "latest",
+    "leaflet": "latest",
+    "foundation-sites": "latest",
+    "topojson": "latest",
+    "jquery": "2.2.4"
+  },
+  "resolutions": {
+    "jquery": "2.2.4"
+  }
+}
