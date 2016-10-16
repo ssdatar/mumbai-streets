@@ -199,7 +199,7 @@ module.exports = function(grunt) {
       dev: {
         options: {
           hostname: '*',
-          port: 8080,
+          port: 3000,
           bases: 'src',
           livereload: true,
           showStack: true
