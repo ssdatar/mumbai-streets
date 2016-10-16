@@ -114,13 +114,24 @@ function addTopoData(topoData){
 
   // });
   
+  console.log(topoData);
+
+
   topoLayer.addData(topoData);
   topoLayer.addTo(map);
 
   topoLayer.eachLayer(function(layer) {
-    layer.setStyle({
-      weight: 1
-    });
+    if (layer.feature.properties.name !== null) {
+      layer.setStyle({
+        weight: 1
+      });
+    } else {
+      layer.setStyle({
+        weight: 0
+      });
+    }
+
+    
 
     layer.on({
       mouseover: function() {
