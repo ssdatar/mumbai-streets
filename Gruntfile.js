@@ -8,19 +8,19 @@ module.exports = function(grunt) {
           {
             expand: true,
             src: ['bower/jquery/dist/jquery.min.js'],
-            dest: 'build/assets/js/lib/',
-            rename: function (dest, src) {
-              return dest + src.substring(src.lastIndexOf('/')).replace('.min','');
-            }
-          },
-          {
-            expand: true,
-            src: ['bower/d3/d3.min.js'],
             dest: 'build/scripts/lib/',
             rename: function (dest, src) {
               return dest + src.substring(src.lastIndexOf('/')).replace('.min','');
             }
           },
+          // {
+          //   expand: true,
+          //   src: ['bower/d3/d3.min.js'],
+          //   dest: 'build/scripts/lib/',
+          //   rename: function (dest, src) {
+          //     return dest + src.substring(src.lastIndexOf('/')).replace('.min','');
+          //   }
+          // },
           {
             expand: true,
             src: ['bower/topojson/topojson.min.js'],
@@ -29,9 +29,11 @@ module.exports = function(grunt) {
               return dest + src.substring(src.lastIndexOf('/')).replace('.min','');
             }
           },
-          { expand: true, flatten: true, src: ['src/data/*'], dest: 'build/data/' },
-          { expand: true, flatten: true, src: ['src/images/*'], dest: 'build/images/' },
-          { expand: true, flatten: true, src: ['src/style/lib/foundation.css'], dest: 'build/style/lib/' }
+          { expand: true, flatten: true, src: ['src/style/lib/images/*'], dest: 'build/style/lib/images/' },
+          { expand: true, flatten: true, src: ['src/data/mumbai.json'], dest: 'build/data/' },
+          { expand: true, flatten: true, src: ['src/scripts/lib/leaflet.js'], dest: 'build/scripts/lib' },
+          { expand: true, flatten: true, src: ['src/style/lib/foundation.css'], dest: 'build/style/lib/' },
+          { expand: true, flatten: true, src: ['src/style/lib/leaflet.css'], dest: 'build/style/lib/' }
         ]
       }
     },
@@ -133,20 +135,12 @@ module.exports = function(grunt) {
       }
     },
     
-    s3: {
+    'gh-pages': {
       options: {
-        accessKeyId: "<%= aws.key %>",
-        secretAccessKey: "<%= aws.secret %>",
-        bucket: "<%= aws.bucket %>",
-        access: "public-read",
-        gzip: true,
-        cache: false
+        base: 'build/',
+        message: 'Pushed to gh-pages'
       },
-      build: {
-        cwd: "build/",
-        src: "**",
-        dest: 'georgia-presidential-elections/'
-      }
+      src: ['**/*']
     },
 
     bowercopy: {
@@ -278,10 +272,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-express');
   grunt.loadNpmTasks('grunt-open');
   grunt.loadNpmTasks('grunt-exec');
+  grunt.loadNpmTasks('grunt-gh-pages');
 
   grunt.registerTask('default', ['bowercopy','copy','uglify','cssmin','processhtml','htmlmin','s3']);
   grunt.registerTask('build', ['clean','bowercopy','copy', 'uglify','cssmin','htmlmin']);
-  grunt.registerTask('deploy', ['s3']);
+  grunt.registerTask('deploy', ['build','gh-pages']);
   grunt.registerTask('lint', ['jshint']);
   grunt.registerTask('server', ['express:dev','open:dev','watch:dev','express-keepalive']);
   grunt.registerTask('server:test', ['express:test','open:test','watch:test','express-keepalive']);

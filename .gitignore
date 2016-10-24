@@ -8,6 +8,7 @@ lib-cov
 *.gz
 *.sublime-project
 *.sublime-workspace
+.grunt
 
 pids
 logs
