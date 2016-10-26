@@ -1,18 +1,3 @@
-# My Project
+# Mumbai's Streets
 
-Description:
-
-Published:
-
-Lives here:
-
-Hosted here:
-
-## Dependencies
-
-## Notes
-
-## Todo
-
-- [ ] Get started
-- [ ] Do some stuff
+Description: Coming soon
