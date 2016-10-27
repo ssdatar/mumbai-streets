@@ -27,8 +27,7 @@ L.tileLayer('http://tile.stamen.com/toner-lite/{z}/{x}/{y}.png',
 
 // var topoLayer = new L.TopoJSON();
 
-$.getJSON('data/mumbai.json')
-.done(geoData);
+$.getJSON('data/mum-small.json').done(geoData);
 
 function geoData(data) {
   var geoJson = L.geoJSON(data, {
@@ -41,6 +40,8 @@ function geoData(data) {
   map.on('zoomend', function() {
     if(map.getZoom() > 13) {
       geoJson.setStyle({weight: 3});
+    } else {
+      geoJson.setStyle({weight: 1});
     }
   });
 }
