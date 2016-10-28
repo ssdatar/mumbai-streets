@@ -9,6 +9,7 @@ lib-cov
 *.sublime-project
 *.sublime-workspace
 .grunt
+.python-version
 
 pids
 logs
