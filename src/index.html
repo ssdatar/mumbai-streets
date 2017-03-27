@@ -45,13 +45,26 @@
 </head>
 <body>
 
-  <div class="row">
+  <!-- <div class="row">
     <div class="small-12 column">
-      <h1>Who are Mumbai&rsquo;s streets named after?</h1>
+      <h1>Who are Mumbai&rsquo;s streets named after?</h1> -->
 
-      <div id="map"></div>
-    </div>
-  </div>
+      <div id="map">
+        <div id="info-box"></div>
+        <div id="controls">
+          <label for="categ">Choose category</label>
+          <select name="categ" id="categ">
+            <option value="all">All</option>
+            <option value="business">Business</option>
+            <option value="entertainment">Entertainment</option>
+            <option value="religion">Religion</option>
+            <option value="politics">Politics</option>
+            <option value="historical">Historical</option>
+          </select>
+        </div>
+      </div>
+    <!-- </div>
+  </div> -->
 
   <script src="scripts/lib/jquery.js"></script>
   <script src="scripts/lib/leaflet.js"></script>

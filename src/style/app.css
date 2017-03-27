@@ -3,5 +3,37 @@ h1 {
 }
 
 #map {
-  height: 550px;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+#info-box {
+  position: absolute;
+  background-color: #fff;
+  top: 5vh;
+  left: 5vw;
+  width: 30vw;
+  min-height: 20vh;
+  z-index: 9999;
+  padding: 1em;
+  font-size: 1.2em;
+}
+
+#controls {
+  position: absolute;
+  background-color: #fff;
+  top: 5vh;
+  right: 5vw;
+  z-index: 9999;
+  padding: 1em;
+  font-size: 1.2em;
+}
+
+@media screen and (max-width: 768px) {
+  #info-box {
+    top: 60%;
+    left: 0%;
+    width: 100%;
+  }
 }
