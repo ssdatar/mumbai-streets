@@ -1,3 +1,7 @@
+import { select } as 'd3.select' from 'd3-selection';
+import { json } from 'd3-request';
+import * from 'd3-queue';
+
 var map = L.map('map', {
   zoom: 12,
   center: [18.9920833,72.8636392]
