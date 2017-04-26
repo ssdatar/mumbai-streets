@@ -19,6 +19,9 @@ bower
 build
 utils
 
+dist/
+assets/js/lib.js
+
 npm-debug.log
 node_modules
 aws.json

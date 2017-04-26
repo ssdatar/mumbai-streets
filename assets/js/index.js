@@ -1,8 +1,8 @@
-import { select } as 'd3.select' from 'd3-selection';
+import * as L from 'leaflet';
 import { json } from 'd3-request';
-import * from 'd3-queue';
 
-var map = L.map('map', {
+
+const map = L.map('map', {
   zoom: 12,
   center: [18.9920833,72.8636392]
 });
@@ -21,12 +21,17 @@ L.tileLayer(darkMap,
 
 var streetLookup = {};
 
-$.getJSON('data/streets.json').done(geoData);
 
-var current = $('#categ').val();
+const categ = d3.select('#categ'),
+      infoBox = d3.select('#info-box');
 
-$('#categ').on('change', function() {
-  var selected = $('#categ').val();
+const current = categ.property('value');
+
+// Get JSON and build map
+json('data/streets.json', geoData);
+
+categ.on('change', () => {
+  var selected = categ.property('value');
   showLayer(selected, current);
 });
 
@@ -35,6 +40,8 @@ $('#categ').on('change', function() {
 *******************************************/
 
 function geoData(data) {
+  console.log(data);
+
   var geoJson = L.geoJSON(data, {
     style: style,
     onEachFeature: onEachFeature
@@ -51,13 +58,17 @@ function geoData(data) {
   });
 }
 
+/******************************************
+******* CLICK EVENT FUNCTION ON EACH FEATURE *******
+*******************************************/
+
 function onEachFeature(feature, layer) {
   var tooltip = feature.properties.d;
 
   streetLookup[feature.properties.osm_id] = layer;
 
   layer.on('click', function(e) {
-    $('#info-box').html('<p>'+ feature.properties.n + '</p><p>' + tooltip + '</p>')
+    infoBox.html('<p>'+ feature.properties.n + '</p><p>' + tooltip + '</p>')
   });
 
 }
