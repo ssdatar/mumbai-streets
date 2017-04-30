@@ -14,7 +14,11 @@ h1 {
   height: 100%;
   width: 100%;
   position: relative;
-  z-index: 1;
+  z-index: 0 !important;
+
+  .leaflet-map-pane {
+    z-index: 0 !important;
+  }
 }
 
 #info-box {
@@ -27,6 +31,11 @@ h1 {
   z-index: 9999 !important;
   padding: 1em;
   font-size: 1.2em;
+  opacity: 0;
+
+  &.show {
+    opacity: 1;
+  }
 
   @media screen and (max-width: $mobile-width) {
     bottom: 100vh;

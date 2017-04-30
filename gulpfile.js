@@ -1,4 +1,4 @@
-var gulp = require('gulp'),
+const gulp = require('gulp'),
   argv = require('yargs').argv,
   rename = require('gulp-rename'),
   buffer = require('vinyl-buffer'), // Vinyl is an interface between browserify and gulp
@@ -15,8 +15,8 @@ var gulp = require('gulp'),
   uglify = require('gulp-uglify'),
   cssnano = require('gulp-cssnano'),
   path   = require('path'),
-  rename = require('gulp-rename'),
-  concat = require('gulp-concat');
+  concat = require('gulp-concat'),
+  jsonminify = require('gulp-jsonminify');
 
 var SRC = './assets/';
 var PROD = './dist/prod/';
@@ -86,7 +86,8 @@ gulp.task('build-assets', function() {
   var images = gulp.src(SRC + 'img/**')
     .pipe(gulp.dest(ENV + 'img'));
 
-  var data = gulp.src(SRC + 'data/**')
+  var data = gulp.src(SRC + 'data/streets.json')
+    // .pipe(jsonminify())
     .pipe(gulp.dest(ENV + 'data'));
 
   var css = gulp.src(ENV + 'css/style.css')

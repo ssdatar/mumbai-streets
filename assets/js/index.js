@@ -40,7 +40,6 @@ categ.on('change', () => {
 *******************************************/
 
 function geoData(data) {
-  console.log(data);
 
   var geoJson = L.geoJSON(data, {
     style: style,
@@ -68,6 +67,7 @@ function onEachFeature(feature, layer) {
   streetLookup[feature.properties.osm_id] = layer;
 
   layer.on('click', function(e) {
+    infoBox.classed('show', true);
     infoBox.html('<p>'+ feature.properties.n + '</p><p>' + tooltip + '</p>')
   });
 
