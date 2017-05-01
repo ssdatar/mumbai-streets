@@ -130,7 +130,6 @@ function style(feature) {
 
 function getWeight(zoom) {
 
-  console.log(zoom)
   if (zoom > 15) {
     return 7;
   }
