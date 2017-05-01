@@ -21,6 +21,7 @@ utils
 
 dist/
 assets/js/lib.js
+.publish/
 
 npm-debug.log
 node_modules
