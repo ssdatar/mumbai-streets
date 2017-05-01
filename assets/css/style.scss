@@ -59,6 +59,35 @@ h1 {
   z-index: 9999 !important;
   padding: 1em;
   font-size: 1.2em;
+
+  h4 {
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+
+  .intro {
+    margin: 0;
+  }
+
+  .legend {
+    width: 45%;
+    display: inline-block;
+
+    .legend-box {
+      width: 10px;
+      height: 10px;
+      display: inline-block;
+
+      &.men {
+        background-color: #21abcd;
+      }
+
+      &.women {
+        background-color: #cd5c5c;
+      }
+    }
+  }
+
 }
 
 // Loading spinner
