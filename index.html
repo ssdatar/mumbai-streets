@@ -8,9 +8,9 @@
 	<!-- Basic Page Needs
   ================================================== -->
 	<meta charset="utf-8">
-	<title>Mumbai Streets</title>
-	<meta name="description" content="">
-	<meta name="author" content="">
+	<title>Mumbai Streets: What is behind their names?</title>
+	<meta name="description" content="A closer look at the history of the names behind (almost) every road in Mumbai">
+	<meta name="author" content="Saurabh Datar">
 
 	<!-- Social Open Graph Metas: fill these out to make your fb sharing post
   ================================================== -->
@@ -34,64 +34,57 @@
   crossorigin=""/>
   <link rel="stylesheet" href="./css/style.css" />
 
-  <!-- <link href='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css' rel='stylesheet' /> -->
-
-
-  <!-- <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.26.0/mapbox-gl.js'></script>
-  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.26.0/mapbox-gl.css' rel='stylesheet' /> -->
 	<!--[if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 
 </head>
 <body>
+  <div class="loading"></div>
 
-  <!-- <div class="row">
-    <div class="small-12 column">
-      <h1>Who are Mumbai&rsquo;s streets named after?</h1> -->
+  <div id="popover"></div>
 
-
-      <div class="loading"></div>
-
-      <div id="map">
-        <div id="info-box"></div>
-        
-        <div id="controls">
-          <h4>Roads of Mumbai</h4>
-          <p class="intro">Click on a road to know more about it.</p>
-          
-          <div class="legend-wrapper">  
-            <div class="legend">
-              <p>
-                <div class="legend-box men"></div>
-                Men
-              </p>
-            </div>
-            <div class="legend">
-              <p>
-                <div class="legend-box women"></div>
-                Women
-              </p>
-            </div>
-          </div>
-
-          <label for="categ">Filter by category</label>
-          
-          <select name="categ" id="categ">
-            <option value="all">All</option>
-            <option value="business">Business</option>
-            <option value="entertainment">Entertainment</option>
-            <option value="religion">Religion</option>
-            <option value="politics">Politics</option>
-            <option value="historical">Historical</option>
-          </select>
-
+  <div id="map">
+    <div id="info-box"></div>
     
-
-        </div>           
+    <div id="controls">
+      <h3>Roads of Mumbai</h3>
+      <p class="intro">Click on a road to know more about it.</p>
+      
+      <div class="legend-wrapper">  
+        <div class="legend">
+          <p>
+            <div class="legend-box men"></div>
+            Men
+          </p>
+        </div>
+        <div class="legend">
+          <p>
+            <div class="legend-box women"></div>
+            Women
+          </p>
+        </div>
       </div>
-    <!-- </div>
-  </div> -->
+
+      <label for="categ">Filter by category</label>
+      
+      <select name="categ" id="categ">
+        <option value="all">All</option>
+        <option value="business">Business</option>
+        <option value="entertainment">Entertainment</option>
+        <option value="religion">Religion</option>
+        <option value="politics">Politics</option>
+        <option value="historical">Historical</option>
+      </select>
+
+      <p><em>Built by <strong><a href="https://ssdatar.github.io" target="_blank">Saurabh Datar</a></strong></em></p>
+
+      <p><a href="./about.html" target="_blank">About this project</a></p>
+
+
+
+    </div>           
+  </div>
 
   <!-- build:js scripts/main.js -->
   <!-- <script src="./lib.js"></script> -->
