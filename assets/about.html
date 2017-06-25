@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en"> <!--<![endif]-->
+<head>
+
+    <!-- Basic Page Needs
+  ================================================== -->
+    <meta charset="utf-8">
+    <title>Mumbai Streets: What is behind their names?</title>
+    <meta name="description" content="A closer look at the history of the names behind (almost) every road in Mumbai">
+    <meta name="author" content="Saurabh Datar">
+
+    <!-- Social Open Graph Metas: fill these out to make your fb sharing post
+  ================================================== -->
+  <meta property="og:url" content="" />
+  <meta property="og:title" content="" />
+  <meta property="og:type" content="" />
+  <meta property="og:image" content="" />
+  <meta property="og:description" content="" />
+
+  <!-- Mobile Specific Metas
+  ================================================== -->
+   <meta name="apple-mobile-web-app-capable" content="yes" />
+   <meta name="apple-touch-fullscreen" content="yes">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+    <!-- CSS
+  ================================================== -->
+  <!--[if lte IE 8]>
+      <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css">
+  <!--<![endif]-->
+  <link rel="stylesheet" href="./css/style.css" />
+
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+</head>
+<body>
+  <div class="pure-g">
+    <div class="pure-u-12">
+      <h2>About this project</h2>
+      <p>This project is inspired by Noah Veltman&rsquo;s <a href="http://sfstreets.noahveltman.com/" target="_blank">SF Streets</a> map, with some additional features and layers on top. The latter comes from my love for my home town, one of the greatest cities in the world.</p>
+
+      <h3>Data sources</h3>
+      <p>The roads shapefile comes from Mapzen&rsquo;s excellent <a href="https://mapzen.com/data/metro-extracts/" target="_blank">metro extract service</a> built on top of Open Street Map. Further data conversion was done using the ogr2ogr tool. The map itself is built with <a href="http://leafletjs.com/">Leaflet JS</a>, with some more help from a custom built of Mike Bostock&rsquo;s <a href="https://d3js.org">D3.js library</a>. Check out the code and data on <a href="http://github.com/ssdatar/mumbai-streets">Github</a>.</p>
+
+      <h3>Classification notes</h3>
+      <p>The categorisation of the names are strictly subjective using what I thought would be apt categories. <strong>Any omission, mistake, or any other thing that you may find offensive is strictly coincidental. No intentional harm was intended</strong>.
+      
+      <ul>
+        <li class="notes">The genders have been manually coded. I made a spreadsheet of every street name in the map shape and went line by line. There may be some cases where genders could not be assigned or I couldn&rsquo;t verify the gender. Those have been coded to &ldquo;no gender&rdquo;.</li>
+
+        <li class="notes">Information about street names was also manually collected. This means I literally typed each name in Google and DuckDuckGo, and used whatever these two engines gave me. I have tried my level best to gather as much information as I could. I understand this is biased towards sources in English but going through 4,000-odd names is not an easy task.</li>
+
+        <li class="notes">The religion category has been applied to any name connected to any religion &mdash; a saint, missionary, or a spiritual leader</li>
+
+        <li class="notes">Politics was much more tricky. So I applied this logic. Any name that has relevance in context of events before Independence is historical. Anything after Independence is politics. So, Mahatma Gandhi would be historical. But Lal Bahadur Shastri would be political.</li>
+      </ul>
+
+      <p>If you have any concerns or qualms with it, or you want to add information about any street, feel free to <a href="mailto:saurabhsdatar+mumbaistreets@gmail.com?subject=About your map&body=Hi, we need to talk about your map">email me</a>.</p></p>
+
+    </div>
+  </div>
+
+</body>
+</html>

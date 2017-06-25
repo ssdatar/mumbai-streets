@@ -2,8 +2,16 @@ $mobile-width: 768px;
 $narrow-mobile: 360px;
 
 body {
-  height: 100vh;
+  height: 100%;
   width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family:'Helvetica', 'sans-serif', 'Arial';
+}
+
+.pure-g {
+  margin: 0 auto;
+  max-width: 50em;
 }
 
 h1 {
@@ -11,10 +19,11 @@ h1 {
 }
 
 #map {
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100% !important;
   position: relative;
   z-index: 0 !important;
+  cursor: crosshair;
 
   .leaflet-map-pane {
     z-index: 0 !important;
@@ -40,20 +49,32 @@ h1 {
 
   @media screen and (max-width: $mobile-width) {
     background-color: rgba(255,255,255,1);
-    bottom: 100vh;
-    top: 75vh;
-    left: 0vw;
-    right: 100vw;
-    width: 97vw;
-    height: 25vh;
-    padding: .4em;
-    font-size: .9em;
+    // bottom: 100vh;
+    top: auto !important;
+    bottom: 0;
+    left: 0 !important;
+    // right: 100vw;
+    width: 95vw;
+    height: 200px;
+    overflow: scroll;
+    // padding: .5em;
+    // font-size: .9em;
+
+    h4 {
+      margin-top: 0;
+      margin-bottom: .5em;
+    }
+
+    .more {
+      margin-top: .5em;
+    }
+
   }
 }
 
 #controls {
   position: absolute;
-  background-color: rgba(255,255,255, .9);
+  background-color: rgba(255,255,255, .95);
   top: 5vh;
   right: 5vw;
   z-index: 9999 !important;
@@ -62,10 +83,10 @@ h1 {
 
   @media screen and (max-width: $mobile-width) {
     top: 0vh;
-    right: 0vw;
+    right: 0;
   }
 
-  h4 {
+  h3 {
     margin-bottom: 0;
     margin-top: 0;
   }
@@ -95,6 +116,21 @@ h1 {
 
 }
 
+#popover {
+  opacity: 0;
+  position: absolute;
+  width: 200px;
+  z-index: 999999;
+  color: #000;
+  background-color: rgba(255,255,255,0.95);;
+  box-shadow: 5px 5px 5px rgba(0,0,0,.8);
+  padding: 10px;
+
+  &.show {
+    opacity: 1;
+  }
+}
+
 // Loading spinner
 .loading {
   border: 16px solid #f3f3f3; /* Light grey */
@@ -105,11 +141,15 @@ h1 {
   animation: spin 2s linear infinite;
   position: fixed;
   top: 40vh;
-  left: 45vw;
+  left: 40vw;
   z-index: 10000;
 }
 
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+.notes {
+  margin: 1em 0;
 }

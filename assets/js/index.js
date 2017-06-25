@@ -34,7 +34,9 @@ var streetLookup = {};
 
 const categ = select('#categ'),
       infoBox = select('#info-box'),
-      loading = select('.loading');
+      loading = select('.loading'),
+      $map = select('#map'),
+      $infoTip = select('#popover');
 
 const current = categ.property('value');
 
@@ -64,7 +66,9 @@ function geoData(data) {
 
 
   map.on('zoomend', () => {
+
     const weight = getWeight(map.getZoom());
+    // console.log(map.getZoom(), weight)
     geoJson.setStyle({weight: weight});
   });
 }
@@ -75,9 +79,14 @@ function geoData(data) {
 
 function onEachFeature(feature, layer) {
   var name = `<h4>${feature.properties.n}</h4>`;
-  var text = feature.properties.d;
+  
+  // A call-to-action for anyone who knows more about a street in case I have missed out on adding. Which I probably have
+  var addInfo = `<p>Know about this street? Think there's a mistake? <a href="mailto:saurabhsdatar+mumbaistreets@gmail.com?subject=About ${feature.properties.osm_id}&body=Hi, I know more about this street. Could you please write back about this?">Send me an email</a></p>`;
+  
+  var text = (feature.properties.d.length > 1) ? feature.properties.d : addInfo;
+  
   var readMore = (feature.properties.l.length > 1) ?   
-                ` <a href="${feature.properties.l}" target="_blank">Read more...</a>` : 
+                `<p class="more"><a href="${feature.properties.l}" target="_blank">Read more...</a></p>` : 
                 '';
 
   var current = this;
@@ -92,21 +101,49 @@ function onEachFeature(feature, layer) {
     this.setStyle({color: 'yellow'});
 
     map.flyTo(e.latlng, map.getZoom());
+
+    console.log(tooltip)
     
     infoBox.classed('show', true)
       .html(name + tooltip);
   });
 
   // Highlight street on highlight
-  layer.on('mouseover', function(e) {
-    this.setStyle({color: 'yellow'});
-  })
+  layer.on('mousemove', function(e) {
+    this.setStyle({
+      color: 'yellow',
+      weight: 8
+    });
+    
+    if (!isMobile) {
+      placeTooltip(e.originalEvent.clientX, e.originalEvent.clientY, this.feature.properties.n);
+    }    
+  });
   
 
-  // Reset highlights
+  // Reset highlights and hide tooltip.
   layer.on('mouseout', function(e) {
-    this.setStyle(style(this.feature))
+    this.setStyle(style(this.feature));
+
+    $infoTip.classed('show', false);
   })
+}
+
+function placeTooltip(x, y, info) {
+  const mapWidth = $map.style('width');
+
+  $infoTip.classed('show', true);
+
+  if (x > mapWidth - 200) {
+    $infoTip.style('left', mapWidth - 200 + 'px')
+    .style('top', y + 50 + 'px')  
+
+  } else {
+    $infoTip.style('left', x + 50 + 'px')
+    .style('top', y - 20 + 'px')
+  }
+
+  $infoTip.html(`<p>${info}</p>`);
 }
 
 /******************************************
@@ -134,7 +171,7 @@ function getWeight(zoom) {
     return 7;
   }
 
-  if (zoom > 13 && zoom < 15) {
+  if (zoom > 13 && zoom <= 15) {
     return 5;
   }
 
