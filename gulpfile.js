@@ -78,13 +78,13 @@ gulp.task('sass', function(){
 });
 
 gulp.task('build-assets', function() {
-  var html = gulp.src(SRC + '*.html')
+  var html = gulp.src([SRC + '*.html', SRC + 'favicon.ico'])
   .pipe(gulp.dest(ENV));
 
   var lib = gulp.src(SRC + 'js/lib.js')
   .pipe(gulp.dest(ENV));
 
-  var images = gulp.src(SRC + 'img/**')
+  var images = gulp.src([SRC + 'img/**'])
     .pipe(gulp.dest(ENV + 'img'));
 
   var data = gulp.src(SRC + 'data/streets.json')
