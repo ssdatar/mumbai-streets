@@ -42,7 +42,7 @@ gulp.task('bundle', function() {
     entries: [SRC + 'js/index.js'],
     debug: true,
     transform: [babelify.configure({
-      presets: ['es2015']
+      presets: ['env']
     })]
   });
 
