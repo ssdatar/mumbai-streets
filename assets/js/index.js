@@ -4,7 +4,7 @@ import {
   selection,
   select,
   selectAll
-} from "d3-selection";
+} from 'd3-selection';
 import { json } from 'd3-request';
 
 const isMobile = window.innerWidth < 600;
@@ -53,7 +53,9 @@ categ.on('change', () => {
 ******* FUNCTION THAT DRAWS THE MAP *******
 *******************************************/
 
-function geoData(data) {
+function geoData(err, data) {
+
+  if (err) throw err;
 
   loading.style('display', 'none');
 
@@ -166,7 +168,6 @@ function style(feature) {
 
 
 function getWeight(zoom) {
-
   if (zoom > 15) {
     return 7;
   }
